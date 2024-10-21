@@ -26,6 +26,7 @@ export type FormattedText = {
   phoneme?: string; // 发音
   phonemeOptions?: string[];
   rate?: number; // 局部变速
+  volume?: number; // 局部音量
 };
 
 // using

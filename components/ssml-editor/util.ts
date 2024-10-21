@@ -21,6 +21,9 @@ export const serialize = (value: Descendant[]): string => {
               if ("rate" in child && child.rate) {
                 ssml = `<prosody rate="${child.rate}">${ssml}</prosody>`;
               }
+              if ("volume" in child && child.volume !== undefined) {
+                ssml = `<prosody volume="${child.volume}">${ssml}</prosody>`;
+              }
               return ssml;
             }
             return "";
@@ -72,10 +75,13 @@ export const deserialize = (str: string = ""): Descendant[] => {
             phoneme: (textNode as any).getAttribute("ph"),
           });
         } else if (textNode.nodeName === "prosody") {
-          paragraph.children.push({
-            text: textNode.textContent || "",
-            rate: +(textNode as any).getAttribute("rate"),
-          });
+          const rate = +(textNode as any).getAttribute("rate");
+          const volume = +(textNode as any).getAttribute("volume");
+          if (rate) {
+            paragraph.children.push({ text: textNode.textContent || "", rate });
+          } else if (volume !== undefined) {
+            paragraph.children.push({ text: textNode.textContent || "", volume });
+          }
         } else {
           paragraph.children.push({ text: textNode.textContent || "" });
         }

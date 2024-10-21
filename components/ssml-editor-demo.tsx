@@ -11,11 +11,8 @@ interface Props {
 }
 
 export default function SSMLEditorDemo({ className }: Props) {
-  // const [text, setText] = useState(
-  //   `<speak><s>那时候苏小姐把自己的爱情看得太名贵了，不肯随便施与。现在呢，宛如做了好衣服，舍不得穿，锁在箱里，过一两年忽然发见这衣服的样子和花色都不时髦了，有些自怅自悔。</s></speak>`
-  // );
   const [text, setText] = useState(
-    `<speak><s>那时候苏小姐把自己的爱情看得<prosody rate="2">太名贵了</prosody>，不肯随便施与。现在呢，宛如做了好衣服，舍不得穿，锁在箱里，过一两年忽然发见这衣服的样子和花色都不时髦了，有些自怅自悔。</s></speak>`
+    `<speak><s>那时候苏小姐把自己的爱情看得太名贵了，不肯随便施与。现在呢，宛如做了好衣服，舍不得穿，锁在箱里，过一两年忽然发见这衣服的样子和花色都不时髦了，有些自怅自悔。</s></speak>`
   );
   return (
     <div className={clsx("", className)}>

@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { AddBreakTimeBtn } from "./core/break/add-break-time-btn";
 import { AddPhonemeBtn } from "./core/phoneme/add-phoneme-btn";
 import { AddRateBtn } from "./core/rate/add-rate-btn";
+import { AddVolumeBtn } from "./core/volume/add-volume-btn";
 
 // Define our own custom set of helpers.
 // export const CustomEditor = {
@@ -47,6 +48,7 @@ const SSMLToolbar = ({ className }: SSMLToolbarProps) => {
       <AddBreakTimeBtn />
       <AddPhonemeBtn />
       <AddRateBtn />
+      <AddVolumeBtn />
     </div>
   );
 };
