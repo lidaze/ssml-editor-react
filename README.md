@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+<img width="770" alt="ssml editor" src="https://github.com/user-attachments/assets/182ccd1e-984a-4313-a680-3cc2e0440bb2">
+
+
 ## Getting Started
 
 First, run the development server:
