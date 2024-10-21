@@ -1,6 +1,5 @@
-import { type Descendant } from "slate";
-
-import { Node, Element, Text } from "slate";
+import { Editor, type Descendant } from "slate";
+import { Node, Element, Text, Range } from "slate";
 
 export const convertToPlainText = (value: Descendant[]) =>
   value.map((n) => Node.string(n)).join("");
@@ -18,6 +17,9 @@ export const serialize = (value: Descendant[]): string => {
               }
               if ("phoneme" in child && child.phoneme) {
                 ssml = `<phoneme alphabet="py" ph="${child.phoneme}">${ssml}</phoneme>`;
+              }
+              if ("rate" in child && child.rate) {
+                ssml = `<prosody rate="${child.rate}">${ssml}</prosody>`;
               }
               return ssml;
             }
@@ -68,6 +70,11 @@ export const deserialize = (str: string = ""): Descendant[] => {
           paragraph.children.push({
             text: textNode.textContent || "",
             phoneme: (textNode as any).getAttribute("ph"),
+          });
+        } else if (textNode.nodeName === "prosody") {
+          paragraph.children.push({
+            text: textNode.textContent || "",
+            rate: +(textNode as any).getAttribute("rate"),
           });
         } else {
           paragraph.children.push({ text: textNode.textContent || "" });
@@ -123,4 +130,19 @@ export const getPlainText = (text: string = "") => {
   }
 
   return plainText;
+};
+
+export const getCurrentWords = (editor: Editor) => {
+  const selection = editor.selection;
+  if (!selection) return null;
+
+  const [start, end] = Range.edges(selection);
+  const startNode = Node.get(editor, start.path);
+  const endNode = Node.get(editor, end.path);
+
+  if (Text.isText(startNode) && Text.isText(endNode)) {
+    return startNode.text.slice(start.offset, end.offset);
+  }
+
+  return null;
 };

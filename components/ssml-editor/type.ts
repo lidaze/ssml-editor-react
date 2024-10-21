@@ -25,6 +25,7 @@ export type FormattedText = {
   breakTime?: number; // 停顿
   phoneme?: string; // 发音
   phonemeOptions?: string[];
+  rate?: number; // 局部变速
 };
 
 // using
