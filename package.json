@@ -28,7 +28,8 @@
     "slate": "^0.110.2",
     "slate-react": "^0.110.2",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "xml-formatter": "^3.6.3"
   },
   "devDependencies": {
     "@types/node": "^20",

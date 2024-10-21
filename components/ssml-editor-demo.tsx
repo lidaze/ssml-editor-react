@@ -3,8 +3,7 @@
 import clsx from "clsx";
 import SSMLEditor from "./ssml-editor/editor";
 import { useState } from "react";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import XMLViewer from "./xml-viewer";
 
 interface Props {
   className?: string;
@@ -19,8 +18,8 @@ export default function SSMLEditorDemo({ className }: Props) {
       <SSMLEditor className="" text={text} onTextChange={setText} />
 
       <div className="mt-8">
-        <Label htmlFor="message">SSML Content</Label>
-        <Textarea className="min-h-40" id="message" value={text} disabled />
+        <p>SSML Content</p>
+        <XMLViewer ssml={text} />
       </div>
     </div>
   );
